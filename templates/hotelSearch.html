@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Information</title>
+    <script src="js/favorite.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active"><a class="nav-link" href="/home">Home</a></li>
+                <li class="nav-item active"><a class="nav-link" href="/showHistory">Show History</a></li>
+                <li class="nav-item active"><a class="nav-link" href="/showFavorites">Show Favorites</a></li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item active"><a class="nav-link" href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+        <div id="original">
+
+        </div>
+
+        <div id="duplicate">
+
+        </div>
+
+    <div class="container">
+        <div class="row">
+            <br>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+            <form class="form-inline" method="post" action = $servletPath>
+                <div class="form-group mb-2">
+                    <label class="form-control-plaintext" >Enter Keyword: </label>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <input class="form-control" type="text" name = "hotelname">
+                </div>
+                <input class="btn btn-primary mb-2" type="submit" name = "keyword" value="search">
+            </form>
+            <br>
+
+            <h2>Hotel List</h2>
+
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>HotelName</th>
+                        <th>Favorite</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    #foreach($hotel in $hotelObjectList)
+                        <tr>
+                            <td><div><a href="/hotelInfo?hotelId=$hotel.hotelID">$hotel.name</a><br></div></td>
+                            <td><div><button class="btn btn-primary mb-2" onclick="addFavorite($hotel.hotelID,'$hotel.name')">Favorite</button></div>
+                        </tr>
+                    #end
+                </tbody>
+            </table>
+
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
